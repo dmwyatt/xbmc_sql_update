@@ -85,6 +85,7 @@ def main(args):
 	if not folders:
 		# User didn't so we're going to do a global replace
 		execute_sql_cmds(cur, build_sql_cmds(sql), (args.replace_this, args.with_this))
+		conn.commit()
 	else:
 		# User did, so we're going to add a LIKE on to our basic sql
 		sql += " WHERE {column} LIKE %s"
