@@ -67,7 +67,10 @@ def execute_sql_cmds(cursor, cmds, args):
 	"""
 	for cmd in cmds:
 		cursor.execute(cmd, args)
-		print("{} rows updated on {} table for {}".format(cursor.rowcount, str.split(cmd)[1], args[2]))
+		if len(args) == 3:
+			print("{} rows updated on {} table for {}".format(cursor.rowcount, str.split(cmd)[1], args[2]))
+		else:
+			print("{} rows updated on {} table".format(cursor.rowcount, str.split(cmd)[1]))
 
 
 def main(args):
